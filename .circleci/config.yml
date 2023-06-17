@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "32:1c:4f:f5:e7:86:71:2a:dd:64:d8:1b:a0:4d:7a:fe"
+      - checkout
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t $DOCKER_USER/vacunarg:$CIRCLE_SHA1 .
+      - run: ssh -t david_mercado@vacunarg.site "sudo docker run -d --name vacunarg_container -p 8081:80 $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
