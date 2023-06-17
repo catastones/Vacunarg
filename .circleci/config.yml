@@ -9,4 +9,5 @@ jobs:
       - checkout
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t $DOCKER_USER/vacunarg:$CIRCLE_SHA1 .
+      - run:  echo "$PASSWORD" | ssh david_mercado@vacunarg.site "sudo -S docker pull $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
       - run: echo "$PASSWORD" | ssh david_mercado@vacunarg.site "sudo -S docker run -d --name vacunarg_container -p 8081:80 $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
