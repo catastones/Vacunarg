@@ -10,6 +10,6 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t $DOCKER_USER/vacunarg:$CIRCLE_SHA1 .
       - run: docker push $DOCKER_USER/vacunarg:$CIRCLE_SHA1
-      - run: ssh -o StrictHostKeyChecking=no -t -t david_mercado@vacunarg.site "sudo docker stop vacunarg_container || true"
-      - run: ssh -o StrictHostKeyChecking=no -t -t david_mercado@vacunarg.site "sudo docker rm vacunarg_container || true"
-      - run: ssh -o StrictHostKeyChecking=no -t -t david_mercado@vacunarg.site "sudo docker run -d --name vacunarg_container -p 8081:80 $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
+      - run: ssh -o StrictHostKeyChecking=no -t -t root@vacunarg.site "sudo docker stop vacunarg_container || true"
+      - run: ssh -o StrictHostKeyChecking=no -t -t root@vacunarg.site "sudo docker rm vacunarg_container || true"
+      - run: ssh -o StrictHostKeyChecking=no -t -t root@vacunarg.site "sudo docker run -d --name vacunarg_container -p 8081:80 $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
