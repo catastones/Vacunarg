@@ -345,7 +345,7 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script>
-   // Botón de registro de vacuna
+// Botón de registro de vacuna
 document.getElementById("vaccineForm").addEventListener("submit", function(event) {
   event.preventDefault(); // Evitar que la página se refresque
 
@@ -356,33 +356,30 @@ document.getElementById("vaccineForm").addEventListener("submit", function(event
   }
 
   // Consultar API con el CUIL ingresado
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", apiUrl, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-
-  xhr.onload = function() {
-    if (xhr.status === 200) {
-      var data = JSON.parse(xhr.responseText);
+  fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ nro_dni: cuil })
+  })
+    .then((response) => response.json())
+    .then((data) => {
       // Mostrar el resultado en la consola
       console.log(data);
-    } else {
-      console.log("Error en la solicitud");
-    }
-  };
 
-  xhr.onerror = function() {
-    console.log("Error en la solicitud");
-  };
-
-  xhr.send(JSON.stringify({ nro_dni: cuil }));
-
-  Swal.fire({
-    title: 'Éxito!',
-    text: 'Su vacuna ha sido registrada correctamente.',
-    icon: 'success',
-    confirmButtonText: 'Ok'
-  });
+      Swal.fire({
+        title: 'Éxito!',
+        text: 'Su vacuna ha sido registrada correctamente.',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
+
 
 
   function isValidCuil(cuil) {
