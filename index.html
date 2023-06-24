@@ -374,21 +374,20 @@ document.getElementById("vaccineForm").addEventListener("submit", function(event
 
       // Aquí es donde necesitas cambiar. Accede al primer objeto en el arreglo
       let paciente = data[0];
-
       Swal.fire({
-        title: 'Éxito!',
-        text: 'Nombre: ' + paciente.nombre + '<br>' +
-              'Apellido: ' + paciente.apellido + '<br>' +
-              'DNI: ' + paciente.nro_dni + '<br>' +
-              'Fecha de Nacimiento: ' + paciente.fecha_nacimiento + '<br>' +
-              'Dosis: ' + paciente.dosis + '<br>' +
-              'Fecha de Aplicación: ' + paciente.fecha_aplicacion + '<br>' +
-              'Centro de Salud: ' + paciente.centro_salud + '<br>' +
-              'Nombre de Vacuna: ' + paciente.nombre_vacuna + '<br>' +
-              'Lote de Vacuna: ' + paciente.lote_vacuna,
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      });
+  title: 'Éxito!',
+  html: 'Nombre: ' + data[0].nombre + '<br>' +
+        'Apellido: ' + data[0].apellido + '<br>' +
+        'DNI: ' + data[0].nro_dni + '<br>' +
+        'Fecha de Nacimiento: ' + data[0].fecha_nacimiento + '<br>' +
+        'Dosis: ' + data[0].dosis + '<br>' +
+        'Fecha de Aplicación: ' + data[0].fecha_aplicacion + '<br>' +
+        'Centro de Salud: ' + data[0].centro_salud + '<br>' +
+        'Nombre de Vacuna: ' + data[0].nombre_vacuna + '<br>' +
+        'Lote de Vacuna: ' + data[0].lote_vacuna,
+  icon: 'success',
+  confirmButtonText: 'Ok'
+});
     })
     .catch((error) => {
       console.log(error);
