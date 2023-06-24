@@ -3,7 +3,7 @@ function login(event) {
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#password').value;
   
-    fetch('https://api.reciclarg.cloud/login', {
+    fetch('https://api.reciclarg.cloud/auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
