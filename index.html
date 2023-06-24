@@ -349,102 +349,105 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
 <script>
 
   const apiUrl= "https://api.vacunarg.site/buscar_paciente";
-// Botón de registro de vacuna
-document.getElementById("vaccineForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // Evitar que la página se refresque
 
-  var cuil = document.getElementById("cuil").value;
-  if (!isValidCuil(cuil)) {
-    document.getElementById("cuilError").classList.remove("hidden");
-    return;
-  }
+  document.getElementById("vaccineForm").addEventListener("submit", function(event) {
+    event.preventDefault(); 
 
-  // Consultar API con el CUIL ingresado
-  fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ nro_dni: cuil })
-  })
-    .then((response) => response.json())
+    var cuil = document.getElementById("cuil").value;
+    if (!isValidCuil(cuil)) {
+      document.getElementById("cuilError").classList.remove("hidden");
+      return;
+    }
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nro_dni: cuil })
+    })
+    .then((response) => {
+      if (!response.ok) throw new Error(response.status);
+      else return response.json();
+    })
     .then((data) => {
-      // Mostrar el resultado en la consola
       console.log(data);
 
-      // Accede al primer objeto en el arreglo
+      if (data.length === 0) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'No se encontraron datos para el CUIL proporcionado.',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
+        return;
+      }
+
       let paciente = data[0];
 
-      // Formatear las fechas
       let fechaNacimiento = new Date(paciente.fecha_nacimiento);
       let formattedFechaNacimiento = fechaNacimiento.getDate() + '/' + (fechaNacimiento.getMonth() + 1) + '/' + fechaNacimiento.getFullYear();
 
       let fechaAplicacion = new Date(paciente.fecha_aplicacion);
       let formattedFechaAplicacion = fechaAplicacion.getDate() + '/' + (fechaAplicacion.getMonth() + 1) + '/' + fechaAplicacion.getFullYear();
 
-Swal.fire({
-  title: 'Éxito!',
-  html: 'Nombre: ' + paciente.nombre + '<br>' +
-        'Apellido: ' + paciente.apellido + '<br>' +
-        'CUIL: ' + paciente.nro_dni + '<br>' +
-        'Fecha de Nacimiento: ' + formattedFechaNacimiento + '<br>' +
-        'Dosis: ' + paciente.dosis + '<br>' +
-        'Fecha de Aplicación: ' + formattedFechaAplicacion + '<br>' +
-        'Centro de Salud: ' + paciente.centro_salud + '<br>' +
-        'Nombre de Vacuna: ' + paciente.nombre_vacuna + '<br>' +
-        'Lote de Vacuna: ' + paciente.lote_vacuna.replace(/\n/g, '<br>'), // Reemplaza '\n' con '<br>' para saltos de línea
-  icon: 'success',
-  confirmButtonText: 'Ok'
-});
+      Swal.fire({
+        title: 'Éxito!',
+        html: 'Nombre: ' + paciente.nombre + '<br>' +
+              'Apellido: ' + paciente.apellido + '<br>' +
+              'CUIL: ' + paciente.nro_dni + '<br>' +
+              'Fecha de Nacimiento: ' + formattedFechaNacimiento + '<br>' +
+              'Dosis: ' + paciente.dosis + '<br>' +
+              'Fecha de Aplicación: ' + formattedFechaAplicacion + '<br>' +
+              'Centro de Salud: ' + paciente.centro_salud + '<br>' +
+              'Nombre de Vacuna: ' + paciente.nombre_vacuna + '<br>' +
+              'Lote de Vacuna: ' + paciente.lote_vacuna.replace(/\n/g, '<br>'), // Reemplaza '\n' con '<br>' para saltos de línea
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
 
     })
     .catch((error) => {
       console.log(error);
     });
-});
 
+    function isValidCuil(cuil) {
+      var re = /^([20|23|24|27]{2})-([0-9]{8})-([0-9]{1})$/;
+      return re.test(cuil);
+    }
 
-  function isValidCuil(cuil) {
-    var re = /^([20|23|24|27]{2})-([0-9]{8})-([0-9]{1})$/;
-    return re.test(cuil);
-  }
+    let counters = document.querySelectorAll('.counter');
+    let speed = 200; 
 
-  // Efecto de contador en las vacunas registradas
-  let counters = document.querySelectorAll('.counter');
-  let speed = 200; // Cuánto más pequeño sea este número, más rápido será la cuenta
+    counters.forEach(counter => {
+      let updateCount = () => {
+        let target = +counter.getAttribute('data-count');
+        let count = +counter.innerText.replace(/\D/g, '');
 
-  counters.forEach(counter => {
-    let updateCount = () => {
-      let target = +counter.getAttribute('data-count');
-      let count = +counter.innerText.replace(/\D/g, ''); // Aquí quitamos los puntos en caso de que existan
+        let inc = target / speed;
 
-      // Incremento pequeño a la vez
-      let inc = target / speed;
-
-      // Verificar si ya llegó al target
-      if (count < target) {
-        // Añadir incremento al contador y esperar un poco antes de llamar esta función de nuevo
-        counter.innerText = Math.ceil(count + inc).toLocaleString();
-        setTimeout(updateCount, 1);
-      } else {
-        counter.innerText = target.toLocaleString();
-      }
-    };
-
-    // Crear el observer
-    let observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          updateCount();
-          observer.unobserve(entry.target);
+        if (count < target) {
+          counter.innerText = Math.ceil(count + inc).toLocaleString();
+          setTimeout(updateCount, 1);
+        } else {
+          counter.innerText = target.toLocaleString();
         }
-      });
-    });
+      };
 
-    // Iniciar la observación
-    observer.observe(counter);
+      let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            updateCount();
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      observer.observe(counter);
+    });
   });
 </script>
+
 
 </body>
 
