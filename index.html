@@ -437,21 +437,20 @@ fetch(apiUrl, {
   },
   body: JSON.stringify({ nro_dni: cuil })
 })
-  console.log(cuil)
-  .then((response) => response.json())
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Error en la solicitud');
+    }
+    return response.json();
+  })
   .then((data) => {
-    // Mostrar los datos en la página
-    const resultElement = document.getElementById("result");
-    resultElement.innerHTML = `
-      <p>Nombre: ${data.nombre}</p>
-      <p>Apellido: ${data.apellido}</p>
-      <p>CUIL: ${data.nro_dni}</p>
-      <p>Fecha de vacunación: ${data.fecha_vacunacion}</p>
-    `;
+    // Mostrar el resultado en la consola
+    console.log(data);
   })
   .catch((error) => {
     console.log(error);
   });
+
 
     Swal.fire({
       title: 'Éxito!',
