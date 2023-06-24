@@ -346,52 +346,52 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script>
-  // API endpoint para la búsqueda por DNI
-  const apiUrl = "https://api.vacunarg.site/buscar_paciente";
+//   // API endpoint para la búsqueda por DNI
+//   const apiUrl = "https://api.vacunarg.site/buscar_paciente";
 
-  document.getElementById("vaccineForm").addEventListener("submit", function (event) {
-    event.preventDefault();
+//   document.getElementById("vaccineForm").addEventListener("submit", function (event) {
+//     event.preventDefault();
 
-    var cuil = document.getElementById("cuil").value;
-    if (!isValidCuil(cuil)) {
-      document.getElementById("cuilError").classList.remove("hidden");
-      return;
-    }
+//     var cuil = document.getElementById("cuil").value;
+//     if (!isValidCuil(cuil)) {
+//       document.getElementById("cuilError").classList.remove("hidden");
+//       return;
+//     }
 
-// Consultar API con el CUIL ingresado
-fetch(apiUrl, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({ nro_dni: cuil })
-})
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error('Error en la solicitud');
-    }
-    return response.json();
-  })
-  .then((data) => {
-    // Mostrar el resultado en la consola
-    console.log(data);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// // Consultar API con el CUIL ingresado
+// fetch(apiUrl, {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({ nro_dni: cuil })
+// })
+//   .then((response) => {
+//     if (!response.ok) {
+//       throw new Error('Error en la solicitud');
+//     }
+//     return response.json();
+//   })
+//   .then((data) => {
+//     // Mostrar el resultado en la consola
+//     console.log(data);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
 
-    Swal.fire({
-      title: 'Éxito!',
-      text: 'Su vacuna ha sido registrada correctamente.',
-      icon: 'success',
-      confirmButtonText: 'Ok'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        location.reload();
-      }
-    });
-  });
+//     Swal.fire({
+//       title: 'Éxito!',
+//       text: 'Su vacuna ha sido registrada correctamente.',
+//       icon: 'success',
+//       confirmButtonText: 'Ok'
+//     }).then((result) => {
+//       if (result.isConfirmed) {
+//         location.reload();
+//       }
+//     });
+//   });
 
   function isValidCuil(cuil) {
     var re = /^([20|23|24|27]{2})-([0-9]{8})-([0-9]{1})$/;

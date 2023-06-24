@@ -336,26 +336,26 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
 
 
 <script>
-    document.getElementById("vaccineForm").addEventListener("submit", function(event){
-      event.preventDefault();
+    // document.getElementById("vaccineForm").addEventListener("submit", function(event){
+    //   event.preventDefault();
     
-      var cuil = document.getElementById("cuil").value;
-      if(!isValidCuil(cuil)){
-        document.getElementById("cuilError").classList.remove("hidden");
-        return;
-      }
+    //   var cuil = document.getElementById("cuil").value;
+    //   if(!isValidCuil(cuil)){
+    //     document.getElementById("cuilError").classList.remove("hidden");
+    //     return;
+    //   }
     
-      Swal.fire({
-        title: 'Éxito!',
-        text: 'Su vacuna ha sido registrada correctamente.',
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          location.reload();
-        }
-      })
-    });
+    //   Swal.fire({
+    //     title: 'Éxito!',
+    //     text: 'Su vacuna ha sido registrada correctamente.',
+    //     icon: 'success',
+    //     confirmButtonText: 'Ok'
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       location.reload();
+    //     }
+    //   })
+    // });
     
     function isValidCuil(cuil) {
       var re = /^([20|23|24|27]{2})-([0-9]{8})-([0-9]{1})$/;
