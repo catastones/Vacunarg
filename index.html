@@ -373,11 +373,19 @@ document.getElementById("vaccineForm").addEventListener("submit", function(event
       console.log(data);
 
       Swal.fire({
-        title: 'Éxito!',
-        text: 'Su vacuna ha sido registrada correctamente.',
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      });
+  title: 'Éxito!',
+  text: 'Nombre: ' + data.nombre + '\n' +
+        'Apellido: ' + data.apellido + '\n' +
+        'DNI: ' + data.nro_dni + '\n' +
+        'Fecha de Nacimiento: ' + data.fecha_nacimiento + '\n' +
+        'Dosis: ' + data.dosis + '\n' +
+        'Fecha de Aplicación: ' + data.fecha_aplicacion + '\n' +
+        'Centro de Salud: ' + data.centro_salud + '\n' +
+        'Nombre de Vacuna: ' + data.nombre_vacuna + '\n' +
+        'Lote de Vacuna: ' + data.lote_vacuna,
+  icon: 'success',
+  confirmButtonText: 'Ok'
+});
     })
     .catch((error) => {
       console.log(error);
