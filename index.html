@@ -435,8 +435,9 @@ fetch(apiUrl, {
   headers: {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({ cuil: cuil })
+  body: JSON.stringify({ nro_dni: cuil })
 })
+  console.log(cuil)
   .then((response) => response.json())
   .then((data) => {
     // Mostrar los datos en la página
