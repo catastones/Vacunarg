@@ -382,20 +382,21 @@ document.getElementById("vaccineForm").addEventListener("submit", function(event
       let fechaAplicacion = new Date(paciente.fecha_aplicacion);
       let formattedFechaAplicacion = fechaAplicacion.getDate() + '/' + (fechaAplicacion.getMonth() + 1) + '/' + fechaAplicacion.getFullYear();
 
-      Swal.fire({
-        title: 'Éxito!',
-        text: 'Nombre: ' + paciente.nombre + '\n' +
-              'Apellido: ' + paciente.apellido + '\n' +
-              'DNI: ' + paciente.nro_dni + '\n' +
-              'Fecha de Nacimiento: ' + formattedFechaNacimiento + '\n' +
-              'Dosis: ' + paciente.dosis + '\n' +
-              'Fecha de Aplicación: ' + formattedFechaAplicacion + '\n' +
-              'Centro de Salud: ' + paciente.centro_salud + '\n' +
-              'Nombre de Vacuna: ' + paciente.nombre_vacuna + '\n' +
-              'Lote de Vacuna: ' + paciente.lote_vacuna,
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      });
+Swal.fire({
+  title: 'Éxito!',
+  html: 'Nombre: ' + paciente.nombre + '<br>' +
+        'Apellido: ' + paciente.apellido + '<br>' +
+        'DNI: ' + paciente.nro_dni + '<br>' +
+        'Fecha de Nacimiento: ' + formattedFechaNacimiento + '<br>' +
+        'Dosis: ' + paciente.dosis + '<br>' +
+        'Fecha de Aplicación: ' + formattedFechaAplicacion + '<br>' +
+        'Centro de Salud: ' + paciente.centro_salud + '<br>' +
+        'Nombre de Vacuna: ' + paciente.nombre_vacuna + '<br>' +
+        'Lote de Vacuna: ' + paciente.lote_vacuna.replace(/\n/g, '<br>'), // Reemplaza '\n' con '<br>' para saltos de línea
+  icon: 'success',
+  confirmButtonText: 'Ok'
+});
+
     })
     .catch((error) => {
       console.log(error);
