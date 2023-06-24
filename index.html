@@ -372,26 +372,28 @@ document.getElementById("vaccineForm").addEventListener("submit", function(event
       // Mostrar el resultado en la consola
       console.log(data);
 
+      // Aquí es donde necesitas cambiar. Accede al primer objeto en el arreglo
+      let paciente = data[0];
+
       Swal.fire({
-  title: 'Éxito!',
-  text: 'Nombre: ' + data.nombre + '\n' +
-        'Apellido: ' + data.apellido + '\n' +
-        'DNI: ' + data.nro_dni + '\n' +
-        'Fecha de Nacimiento: ' + data.fecha_nacimiento + '\n' +
-        'Dosis: ' + data.dosis + '\n' +
-        'Fecha de Aplicación: ' + data.fecha_aplicacion + '\n' +
-        'Centro de Salud: ' + data.centro_salud + '\n' +
-        'Nombre de Vacuna: ' + data.nombre_vacuna + '\n' +
-        'Lote de Vacuna: ' + data.lote_vacuna,
-  icon: 'success',
-  confirmButtonText: 'Ok'
-});
+        title: 'Éxito!',
+        text: 'Nombre: ' + paciente.nombre + '\n' +
+              'Apellido: ' + paciente.apellido + '\n' +
+              'DNI: ' + paciente.nro_dni + '\n' +
+              'Fecha de Nacimiento: ' + paciente.fecha_nacimiento + '\n' +
+              'Dosis: ' + paciente.dosis + '\n' +
+              'Fecha de Aplicación: ' + paciente.fecha_aplicacion + '\n' +
+              'Centro de Salud: ' + paciente.centro_salud + '\n' +
+              'Nombre de Vacuna: ' + paciente.nombre_vacuna + '\n' +
+              'Lote de Vacuna: ' + paciente.lote_vacuna,
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
     })
     .catch((error) => {
       console.log(error);
     });
 });
-
 
 
   function isValidCuil(cuil) {
