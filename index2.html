@@ -143,24 +143,64 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
                     <label for="name" class="inline-block mb-1 font-medium text-white ">Nombre</label>
                     <input placeholder="John" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded text-gray-500 shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" id="name" name="name">
                   </div>
+
                   <div class="mb-1 sm:mb-2">
                     <label for="surname" class="inline-block mb-1 font-medium text-white">Apellido</label>
                     <input placeholder="Doe" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded text-gray-500 shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" id="surname" name="surname">
                   </div>
-                  <div class="mb-1 sm:mb-2">
-                    <label for="documento" class="inline-block mb-1 font-medium text-white">Documento</label>
-                    <input placeholder="Número de documento" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 text-gray-500 focus:outline-none focus:shadow-outline" id="documento" name="documento">
-                    <p id="documentoError" class="text-red-600 hidden">Por favor, ingresa un número de documento válido.</p>
-                  </div>
+             
                   <div class="mb-1 sm:mb-2">
                     <label for="cuil" class="inline-block mb-1 font-medium text-white">CUIL</label>
                     <input placeholder="20-XXXXXXXX-7" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 text-gray-500 focus:outline-none focus:shadow-outline" id="cuil" name="cuil">
                     <p id="cuilError" class="text-red-600 hidden">Por favor, ingresa un CUIL válido.</p>
                   </div>
+
+                  <div class="mb-1 sm:mb-2">
+                    <label for="fechaNacimiento" class="inline-block mb-1 font-medium text-white">Fecha de Nacimiento</label>
+                    <input placeholder="DD/MM/AAAA" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 text-gray-500 focus:outline-none focus:shadow-outline" id="fechaNacimiento" name="fechaNacimiento">
+                    <p id="fechaNacimientoError" class="text-red-600 hidden">Por favor, ingresa una fecha de nacimiento válida.</p>
+                  </div>
                   <div class="mb-1 sm:mb-2">
                     <label for="vaccineNumber" class="inline-block mb-1 font-medium text-white">Número de Vacuna</label>
                     <input placeholder="123456" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded text-gray-500 shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" id="vaccineNumber" name="vaccineNumber">
                   </div>
+
+                  <div class="mb-1 sm:mb-2">
+                    <label for="fechaAplicacion" class="inline-block mb-1 font-medium text-white">Fecha de Aplicación</label>
+                    <input placeholder="DD/MM/AAAA" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 text-gray-500 focus:outline-none focus:shadow-outline" id="fechaAplicacion" name="fechaAplicacion">
+                    <p id="fechaAplicacionError" class="text-red-600 hidden">Por favor, ingresa una fecha de aplicación válida.</p>
+                  </div>
+
+
+                  <div class="mb-1 sm:mb-2">
+                    <label for="vaccine" class="inline-block mb-1 font-medium text-white">Centro de Salud</label>
+                    <select class="flex-grow w-full h-12 px-4 mb-2 transition text-gray-500 duration-200 bg-white border border-red-100 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" id="vaccine" name="vaccine" required>
+                      <option value="Centro de salud B° Valle Grande">Centro de salud B° Valle Grande</option>
+                      <option value="Centro de Salud Villa Laredo">Centro de Salud Villa Laredo</option>
+                      <option value="De Salud">De Salud</option>
+                      <option value="Centro de salud las margaritas">Centro de salud las margaritas</option>
+                      <option value="Centro de Salud">Centro de Salud</option>
+                      <option value="Centro de salud la isla del rio diamante">Centro de salud la isla del rio diamante</option>
+                      <option value="Centro Medico Sanitario CMS9 San Rafael">Centro Medico Sanitario CMS9 San Rafael</option>
+                      <option value="Minuto a minuto trabajado x nuestra salud">Minuto a minuto trabajado x nuestra salud</option>
+                      <option value="CIS Centro Integrado de Salud">CIS Centro Integrado de Salud</option>
+                      <option value="C.A.P.S. 108 GOUDGE">C.A.P.S. 108 GOUDGE</option>
+                      <option value="Génova Salud">Génova Salud</option>
+                      <option value="Centro Médico Integral">Centro Médico Integral</option>
+                      <option value="INYECTABLES JESUS">INYECTABLES JESUS</option>
+                      <option value="G&G Salud Integral">G&G Salud Integral</option>
+                      <option value="Sancor Salud">Sancor Salud</option>
+                      <option value="Cuerpo y Salud">Cuerpo y Salud</option>
+                      <option value="CSN°159 Humberto Taranto">CSN°159 Humberto Taranto</option>
+                      <option value="Dirección Municipal de Salud">Dirección Municipal de Salud</option>
+                      <option value="Consultorios Médicos Cuyo">Consultorios Médicos Cuyo</option>
+                      <option value="Centro de Especialidades Medicas 9 de Julio">Centro de Especialidades Medicas 9 de Julio</option>
+                      <option value="Urbana Medica 2">Urbana Medica 2</option>
+                      <option value="Otro">Otro</option>
+
+                    </select>
+                  </div>
+
                   <div class="mb-1 sm:mb-2">
                     <label for="vaccine" class="inline-block mb-1 font-medium text-white">Vacuna Recibida</label>
                     <select class="flex-grow w-full h-12 px-4 mb-2 transition text-gray-500 duration-200 bg-white border border-red-100 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" id="vaccine" name="vaccine" required>
