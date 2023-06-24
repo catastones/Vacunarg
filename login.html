@@ -166,7 +166,8 @@
   })
     .then((response) => {
       if (response.status === 200) {
-        window.location.href = '/index2.html'; // redirige a index2.html si la respuesta es 200
+        alert('Login exitoso');
+        //window.location.href = '/index2.html'; // redirige a index2.html si la respuesta es 200
       } else {
         console.error('Error:', response.status);
       }
