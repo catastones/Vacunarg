@@ -364,7 +364,7 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ nro_dni: cuil })
+      body: JSON.stringify({ cuil: cuil })
     })
     .then((response) => {
       if (!response.ok) throw new Error(response.status);
@@ -395,7 +395,7 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
         title: 'Éxito!',
         html: 'Nombre: ' + paciente.nombre + '<br>' +
               'Apellido: ' + paciente.apellido + '<br>' +
-              'CUIL: ' + paciente.nro_dni + '<br>' +
+              'CUIL: ' + paciente.cuil + '<br>' +
               'Fecha de Nacimiento: ' + formattedFechaNacimiento + '<br>' +
               'Dosis: ' + paciente.dosis + '<br>' +
               'Fecha de Aplicación: ' + formattedFechaAplicacion + '<br>' +
