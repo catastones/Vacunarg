@@ -161,8 +161,8 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
                     <p id="fechaNacimientoError" class="text-red-600 hidden">Por favor, ingresa una fecha de nacimiento válida.</p>
                   </div>
                   <div class="mb-1 sm:mb-2">
-                    <label for="vaccineNumber" class="inline-block mb-1 font-medium text-white">Lote de Vacuna</label>
-                    <input placeholder="123456" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded text-gray-500 shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" id="loteVacuna" name="loteVacuna">
+                    <label for="vaccineNumber" class="inline-block mb-1 font-medium text-white">Dosis</label>
+                    <input placeholder="123456" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded text-gray-500 shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" id="dosis" name="dosis">
                   </div>
 
                   <div class="mb-1 sm:mb-2">
@@ -211,6 +211,10 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
                       <option value="Sinopharm">Sinopharm</option>
                       <option value="Sputnik V">Sputnik V</option>
                     </select>
+                  </div>
+                  <div class="mb-1 sm:mb-2">
+                    <label for="vaccineNumber" class="inline-block mb-1 font-medium text-white">Lote de Vacuna</label>
+                    <input placeholder="123456" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded text-gray-500 shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" id="loteVacuna" name="loteVacuna">
                   </div>
                   <div class="mb-1 sm:mb-2">
                     <label class="inline-block mb-1 font-medium text-white">Captcha</label>
@@ -273,6 +277,7 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
     var fechaAplicacion = document.getElementById("fechaAplicacion").value;
     var centroSalud = document.getElementById("centroSalud").value;
     var vacuna = document.getElementById("vacuna").value;
+    var dosis = document.getElementById("dosis").value;
   
     if(!isValidCuil(cuil)){
       document.getElementById("cuilError").classList.remove("hidden");
@@ -290,7 +295,7 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
         apellido: surname,
         nro_dni: cuil,
         fecha_nacimiento: fechaNacimiento,
-        dosis: loteVacuna,
+        dosis: dosis,
         fecha_aplicacion: fechaAplicacion,
         centro_salud: centroSalud,
         nombre_vacuna: vacuna,
