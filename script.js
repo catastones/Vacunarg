@@ -12,17 +12,17 @@ function login(event) {
     })
       .then((response) => {
         if (response.status === 200) {
-          document.querySelector("button[type='submit']").addEventListener("click", function(e) {
-            e.preventDefault();
-            Swal.fire({
-                icon: 'success',
-                title: '¡Hecho!',
-                text: 'Bienvenido: ' + username,
-                confirmButtonText: 'Ok'
-            
-            })
-        });
-          window.location.href = '/index2.html'; // redirige a index2.html si la respuesta es 200
+          Swal.fire({
+            icon: 'success',
+            title: '¡Hecho!',
+            text: 'Bienvenido: ' + username,
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            // redirige a index2.html cuando el usuario hace clic en "OK"
+            if (result.isConfirmed) {
+              window.location.href = '/index2.html';
+            }
+          })
         } else {
           console.error('Error:', response.status);
         }
@@ -31,4 +31,3 @@ function login(event) {
         console.error('Error:', error);
       });
   }
-  
