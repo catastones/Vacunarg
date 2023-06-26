@@ -213,7 +213,7 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
                 <form id="vaccineForm" class="rounded-full shadow-2xl">
                   <div class="mb-1 sm:mb-2">
                     <label for="cuil" class="inline-block mb-1 font-medium text-white">CUIL</label>
-                    <input placeholder="20-XXXXXXXX-7" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none  text-gray-500 :border-deep-purple-accent-400 focus:outline-none  focus:shadow-outline" id="cuil" name="cuil">
+                      <input placeholder="20-XXXXXXXX-7" required="" type="text" class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none text-gray-500 :border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" id="cuil" name="cuil">
                     <p id="cuilError" class="text-red-600 hidden">Por favor, ingresa un CUIL válido.</p>
                   </div>
                   <div class="mb-1 sm:mb-2">
@@ -437,6 +437,21 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
     });
   });
 </script>
+        <script>
+    window.onload = function () {
+        document.getElementById('cuil').addEventListener('input', function (e) {
+            var value = e.target.value.replace(/-/g, '');
+            
+            if (value.length > 2 && value.length <= 10) {
+                value = value.slice(0, 2) + '-' + value.slice(2);
+            } else if (value.length > 10) {
+                value = value.slice(0, 2) + '-' + value.slice(2, 10) + '-' + value.slice(10);
+            }
+            
+            e.target.value = value;
+        });
+    };
+    </script>
 
 
 </body>
