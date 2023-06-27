@@ -88,9 +88,20 @@ const team = {"team":[
     "github": "https://github.com/Leonardo-Valdez"
   }]
 };
-const grupo = team.team;
-console.log(grupo);
 
+    
+async function getData(){
+await fetch('json/team.json')
+    .then((response) =>  response.json());
+    //.then((json) => console.log("dentro del fech "+json));
+}
+//const team_ = getData().then();
+getData().then(team => 
+  console.log(team)
+  );
+console.log(team_);
+
+const grupo = team.team;
 function display(item) {
 
 const articule = `
