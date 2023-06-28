@@ -89,19 +89,17 @@ const team = {"team":[
   }]
 };
 
-    
+
 async function getData(){
 await fetch('json/team.json')
-    .then((response) =>  response.json());
-    //.then((json) => console.log("dentro del fech "+json));
+    .then((response) =>  response.json())
+    .then((json) => Recorrer(json)
+    
+    );
 }
-//const team_ = getData().then();
-getData().then(team => 
-  console.log(team)
-  );
-console.log(team_);
 
-const grupo = team.team;
+
+
 function display(item) {
 
 const articule = `
@@ -141,6 +139,10 @@ const articule = `
 `
 document.getElementById("CardTeamMember").innerHTML += articule;
 }
+function Recorrer(json){
+const grupo = team.team;
 grupo.forEach(item => display(item));
+}
 
+getData();
 ;
